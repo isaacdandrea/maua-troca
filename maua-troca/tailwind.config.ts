@@ -49,7 +49,10 @@ export default {
   				'3': 'hsl(var(--chart-3))',
   				'4': 'hsl(var(--chart-4))',
   				'5': 'hsl(var(--chart-5))'
-  			}
+  			},
+			customBlue: 'rgb(37, 150, 190)',
+			customWhite: 'rgb(227,228,224)',
+			customOrange: 'rgba(237,164,7,255)'
   		},
   		borderRadius: {
   			lg: 'var(--radius)',
