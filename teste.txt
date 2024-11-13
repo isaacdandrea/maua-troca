@@ -1,0 +1,14 @@
+CREATE TABLE arquivos (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nome VARCHAR(255),
+    tipo VARCHAR(255),
+    conteudo LONGBLOB,
+    criado_em TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+
+
+.venv\Scripts\activate
+
+
+apiresend:re_FNGfmCFM_5LYd6XA8EiopFhaeBvQD8GeF
