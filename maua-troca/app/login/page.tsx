@@ -1,7 +1,9 @@
 'use client'
 import * as React from "react"
+import { useState } from "react"
 import { buttonVariants } from "@/components/ui/button"
-import Link from 'next/link';
+import Link from 'next/link'
+import { useRouter } from 'next/navigation' // Importe o useRouter para redirecionamento
 import {
     Card,
     CardContent,
@@ -32,8 +34,20 @@ import { IoArrowBack } from 'react-icons/io5'
 import { DropdownMenuCheckboxItemProps } from "@radix-ui/react-dropdown-menu"
 type Checked = DropdownMenuCheckboxItemProps["checked"]
 
-
 export default function Login() {
+    const [name, setName] = useState("")
+    const [email, setEmail] = useState("")
+    const router = useRouter()  // Instanciando o hook useRouter
+
+    const handleLogin = () => {
+        // Verifica se o nome e o email são iguais aos valores esperados
+        if (name === "admin" && email === "admin12345") {
+            // Se for, redireciona para a página desejada
+            router.push("/outra-pagina") // Altere para a página de destino
+        } else {
+            alert("Credenciais inválidas") // Alerta se as credenciais forem incorretas
+        }
+    }
 
     return (
         <main className="relative flex items-center justify-center min-h-screen bg-cover bg-center bg-no-repeat">
@@ -49,7 +63,7 @@ export default function Login() {
             />
 
             {/* Ícone de voltar */}
-            <Link href="/" className="absolute top-4 left-4 text-customOrange  hover:text-customBlue text-3xl">
+            <Link href="/" className="absolute top-4 left-4 text-customOrange hover:text-customBlue text-3xl">
                 <IoArrowBack />
             </Link>
 
@@ -68,16 +82,34 @@ export default function Login() {
                             </CardHeader>
                             <CardContent className="space-y-2">
                                 <div className="space-y-1">
-                                    <Label htmlFor="name">E-mail</Label>
-                                    <Input id="name" placeholder="Seu email" className="placeholder-gray-400 bg-white" />
+                                    <Label htmlFor="name">Nome</Label>
+                                    <Input
+                                        id="name"
+                                        placeholder="Seu nome"
+                                        className="placeholder-gray-400 bg-white"
+                                        value={name}
+                                        onChange={(e) => setName(e.target.value)} // Atualiza o estado do nome
+                                    />
                                 </div>
                                 <div className="space-y-1">
-                                    <Label htmlFor="username">Senha</Label>
-                                    <Input id="username" placeholder="Sua senha" className="placeholder-gray-400 bg-white" type="password" />
+                                    <Label htmlFor="email">Senha</Label>
+                                    <Input
+                                        id="email"
+                                        placeholder="Seu E-mail"
+                                        className="placeholder-gray-400 bg-white"
+                                        type="password"
+                                        value={email}
+                                        onChange={(e) => setEmail(e.target.value)} // Atualiza o estado do email
+                                    />
                                 </div>
                             </CardContent>
                             <CardFooter>
-                                <Link className={`${buttonVariants({ variant: "outline" })} bg-customOrange text-white hover:bg-customBlue mt-7 rounded-xl`} href="" >Entrar</Link>
+                                <Button
+                                    className={`${buttonVariants({ variant: "outline" })} bg-customOrange text-white hover:bg-customBlue mt-7 rounded-xl`}
+                                    onClick={handleLogin} // Chama a função de login
+                                >
+                                    Entrar
+                                </Button>
                             </CardFooter>
                         </Card>
                     </TabsContent>
@@ -101,8 +133,9 @@ export default function Login() {
 
 
                                 <div className="space-y-1">
-                                    <Label htmlFor="new">Ano</Label>
-                                    <Select>
+                                    <Label htmlFor="new">Senha</Label>
+                                    <Input placeholder="Sua Senha" className="placeholder-gray-400 bg-white" type="password" />
+                                    {/* <Select>
                                         <SelectTrigger className="bg-white w-full justify-start text-left">
                                             <SelectValue placeholder="Selecione seu Ano" />
                                         </SelectTrigger>
@@ -113,7 +146,7 @@ export default function Login() {
                                                 <SelectItem value="3ano">3° Ano</SelectItem>
                                             </SelectGroup>
                                         </SelectContent>
-                                    </Select>
+                                    </Select> */}
                                 </div>
 
 
@@ -141,5 +174,3 @@ export default function Login() {
         </main>
     );
 }
-
-
