@@ -17,7 +17,7 @@ export default async function Home() {
           <p className="text-xl text-gray-700 mb-6">
             O sistema que facilita a troca de salas do Instituto Mauá de Tecnologia. Por alunos para alunos!
           </p>
-          <Link className={`${buttonVariants({ variant: "outline" })} bg-customOrange text-white hover:bg-customBlue mt-9 rounded-xl`} href="/sobre_nos">
+          <Link className={`${buttonVariants({ variant: "outline" })} bg-customOrange text-white hover:bg-customBlue mt-9 rounded-xl py-6 px-6`} href="/sobre_nos">
             Saiba mais
           </Link>
         </div>
